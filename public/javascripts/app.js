@@ -1,40 +1,21 @@
 (function() {
   var app = angular.module('aesBackoffice', ['post-directives']);
 
-  app.controller('PostsController', ['$http','$scope',function($http,$scope){
+  app.controller('PostsController', ['postService','$http','$scope',function(postService,$http,$scope){
     this.currPost;
-
-    this.posts = [
-     { "id":1,
-       "title":"title 1",
-       "type":"news",
-       "body":"body 1",
-       "image":"image.jpg",
-       "thumb":"thumb.jpg",
-    },
-     { "id":2,
-       "title":"title 2",
-       "type":"news",
-       "body":"body 2",
-       "image":"image.jpg",
-       "thumb":"thumb.jpg",
-    },
-     { "id":3,
-       "title":"title 3",
-       "type":"news",
-       "body":"body 3",
-       "image":"image.jpg",
-       "thumb":"thumb.jpg",
-    }];
+    this.posts = postService.posts;
+    this.types = ["Noticia","Evento","Institucional"]
+    
 
    this.currentPost=function(post){
       this.currPost = post;
     }
 
-    this.addPost=function(post){
-      $http.post("/posts/create",post)
+    this.addPost=function(){
+      var ps = this.posts;
+      $http.post("/posts/saveOrUpdate",this.currPost)
       .success(function(post){
-        this.posts.push(post);
+        console.log(post);
       })
       .error(function(error){
         $scope.error = error;
@@ -45,6 +26,25 @@
     this.clear = function(){
       this.currPost = {};
     }
+
+  }]);
+
+
+  app.factory('postService',['$http',function($http){
+    var instance = {
+      posts: []
+    }
+
+    instance.getAll = function(){
+      return $http.get('/posts/list')
+            .success(function(posts){
+              angular.copy(posts,instance.posts);
+            });
+    };
+
+    instance.getAll();
+
+    return instance;
 
   }]);
 

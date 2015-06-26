@@ -27,21 +27,25 @@ router.get('/postForm', function(req, res, next) {
   // }); 	
 });
 
-router.get('/postList', function(req, res, next) {
-  res.render('postList.ejs', { title: 'New Post' });
-  // model.Posts.forge()
-  // .fetch()
-  // .then(function(collection){
-  //  res.json({error:false,data:collection.toJSON()});
-  // })
-  // .catch(function(error){
-  //  return next(error);
-  // });  
+router.get('/posts/list', function(req, res, next) {
+  model.Posts.forge()
+  .fetch()
+  .then(function(posts){
+   res.json(posts);
+  })
+  .catch(function(error){
+    return next(error);
+  });  
 });
 
-router.post("/posts/create",function(req,res,next){
-	
-	model.Post.forge({
+router.post("/posts/saveOrUpdate",function(req,res,next){
+
+  model.Post.forge({id:req.body.id})
+      .save(req.body)
+      .then(function(post){
+        res.json(post);
+      })
+/*	model.Post.forge({
 		type: req.body.type,
 		title: req.body.title,
 		body: req.body.body,
@@ -53,7 +57,7 @@ router.post("/posts/create",function(req,res,next){
 		res.json(post);
 	}).catch(function(error){
 		next(error);
-	});
+	});*/
 });
 
 module.exports = router;
