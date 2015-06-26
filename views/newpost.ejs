@@ -1,9 +1,4 @@
-  <div ng-show="error" class="alert alert-danger row">
-    <span>{{ error.message }}</span>
-  </div>
-
-
-  <div ng-controller="PostsController as p">
+<div ng-controller="PostsController as p">
 
   <table class="table table-hover">
 
@@ -34,6 +29,11 @@
 
   <form ng-submit="p.addPost()"
     style="margin-top:30px;">
+
+    <div ng-show="error" class="alert alert-danger row">
+      <span>{{ error.message }}</span>
+    </div>
+    
     <h3>New Post</h3>
 
     
@@ -41,11 +41,9 @@
       <input ng-model="p.currPost.id" type="integer" class="form-control" title="Id del post" />
     </fieldset>
 
-    <!--  <fieldset class="form-group">
-      <select ng-model="postCtrl.currPost.type" class="form-control" ng-options="Tipos de posts [Noticia, Evento, Institucional]" title="Tipo de Post">
-        <option value>Tipo de post</option>
-      </select>
-    </fieldset> -->
+    <fieldset class="form-group">
+      <select ng-model="postCtrl.currPost.type" class="form-control" ng-options="type for types in [Noticia, Evento, Institucional]" title="Tipo de Post"></select>
+    </fieldset>
 
     <fieldset class="form-group">
       <input ng-model="p.currPost.title" type="text" class="form-control" title="Titulo del post" />

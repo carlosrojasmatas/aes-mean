@@ -1,7 +1,7 @@
 (function() {
   var app = angular.module('aesBackoffice', ['post-directives']);
 
-  app.controller('PostsController', function(){
+  app.controller('PostsController', ['$http','$scope',function($http,$scope){
     this.currPost;
 
     this.posts = [
@@ -27,18 +27,25 @@
        "thumb":"thumb.jpg",
     }];
 
-    this.currentPost=function(post){
+   this.currentPost=function(post){
       this.currPost = post;
     }
 
     this.addPost=function(post){
-      window.alert("added");
+      $http.post("/posts/create",post)
+      .success(function(post){
+        this.posts.push(post);
+      })
+      .error(function(error){
+        $scope.error = error;
+      });
+
     }
 
     this.clear = function(){
       this.currPost = {};
     }
 
-  });
+  }]);
 
 })();

@@ -50,7 +50,7 @@ router.post("/posts/create",function(req,res,next){
 		startDate: req.body.startDate,
 		endDate: req.body.endDate
 	}).save().then(function(post){
-		res.json({error:false,data:{id: post.get('id')}});
+		res.json(post);
 	}).catch(function(error){
 		next(error);
 	});
