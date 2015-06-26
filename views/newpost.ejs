@@ -1,0 +1,79 @@
+  <div ng-show="error" class="alert alert-danger row">
+    <span>{{ error.message }}</span>
+  </div>
+
+
+  <div ng-controller="PostsController as p">
+
+  <table class="table table-hover">
+
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>T&iacute;tulo</th>
+        <th>Tipo</th>
+        <th>Texto</th>
+      </tr>
+    </thead>
+
+    <tbody ng-repeat="post in p.posts">
+
+      <tr ng-click="p.currentPost(post)" >
+        <td >{{post.id}}</td>
+        <td>{{post.title}}</td>
+        <td>{{post.type}}</td>  
+        <td>{{post.body}}</td>  
+      </tr>
+
+    </tbody>
+
+  </table>
+ 
+
+  
+
+  <form ng-submit="p.addPost()"
+    style="margin-top:30px;">
+    <h3>New Post</h3>
+
+    
+    <fieldset class="form-group">
+      <input ng-model="p.currPost.id" type="integer" class="form-control" title="Id del post" />
+    </fieldset>
+
+    <!--  <fieldset class="form-group">
+      <select ng-model="postCtrl.currPost.type" class="form-control" ng-options="Tipos de posts [Noticia, Evento, Institucional]" title="Tipo de Post">
+        <option value>Tipo de post</option>
+      </select>
+    </fieldset> -->
+
+    <fieldset class="form-group">
+      <input ng-model="p.currPost.title" type="text" class="form-control" title="Titulo del post" />
+    </fieldset>
+
+    <fieldset class="form-group">
+      <textarea ng-model="p.currPost.body" type="text" class="form-control" title="Contenido del post"></textarea> 
+    </fieldset>
+
+    <fieldset class="form-group">
+      <input ng-model="p.currPost.image" type="text" class="form-control" title="Nombre de la imagen" />
+    </fieldset>
+
+    <fieldset class="form-group">
+      <input ng-model="p.currPost.thumb" type="text" class="form-control" title="Nombre de la imagen miniatura" />
+    </fieldset>
+
+    <fieldset class="form-group">
+      <input ng-model="p.currPost.startDate" type="date" class="form-control" title="Fecha de comienzo del evento" />
+    </fieldset>
+
+    <fieldset class="form-group">
+      <input ng-model="p.currPost.endDate" type="date" class="form-control" title="Fecha de fin del evento" />
+    </fieldset>
+
+   
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-primary" ng-click="p.clear()">Cancel</button>
+  </form>
+
+   </div>

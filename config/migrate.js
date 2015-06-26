@@ -31,7 +31,7 @@ function createTable(tableName) {
       if (Schema[tableName][key].hasOwnProperty('unique') && Schema[tableName][key].unique) {
         column.unique();
       }
-      if (Schema[tableName][key].hasOwnProperty('unsigned') && Schema[tableName][key].unsigned) {
+      if (Schema[tableName][key].hasOwnProperty('unsigned') && iSchema[tableName][key].unsigned) {
         column.unsigned();
       }
       if (Schema[tableName][key].hasOwnProperty('references')) {
