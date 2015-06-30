@@ -13,9 +13,14 @@
 
     this.addPost=function(){
       var ps = this.posts;
+      var cp = this.currPost;
       $http.post("/posts/saveOrUpdate",this.currPost)
       .success(function(post){
-        console.log(post);
+        
+        if(!cp.id){
+          ps.push(post);  
+        }
+        
       })
       .error(function(error){
         $scope.error = error;
@@ -25,6 +30,16 @@
 
     this.clear = function(){
       this.currPost = {};
+    }
+
+    this.deletePost = function(post,index){
+      var ps  = this.posts;
+      var self = this;
+      $http.post("/posts/delete",post)
+            .success(function(post){
+              ps.splice(index,1);
+              self.clear();
+            })
     }
 
   }]);

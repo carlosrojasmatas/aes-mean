@@ -8,6 +8,7 @@
 				<th>T&iacute;tulo</th>
 				<th>Tipo</th>
 				<th>Texto</th>
+				<th>Borrar</th>
 			</tr>
 		</thead>
 
@@ -17,7 +18,8 @@
 				<td >{{post.id}}</td>
 				<td>{{post.title}}</td>
 				<td>{{post.type}}</td>  
-				<td>{{post.body}}</td>  
+				<td>{{post.body}}</td>
+				<td> <ng-button ng-click="deletePost(post)"></ng-button>  
 			</tr>
 
 		</tbody>

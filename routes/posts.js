@@ -27,6 +27,22 @@ router.get('/postForm', function(req, res, next) {
   // }); 	
 });
 
+router.post('/posts/delete',function(req,res,next){
+  console.log(req.body);
+  model.Post.forge({id:req.body.id})
+      .fetch()
+      .then(function(post){
+        post.destroy({require:true})
+        .then(function(){
+          res.json(post);  
+        })
+        .catch(function(error){
+          return next(error);
+        });
+      });
+      
+});
+
 router.get('/posts/list', function(req, res, next) {
   model.Posts.forge()
   .fetch()
