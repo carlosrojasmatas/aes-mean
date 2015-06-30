@@ -20,7 +20,11 @@ router.post('/dojos/delete',function(req,res,next){
       
 });
 
-router.get('/dojos', function(req, res, next) {
+router.get('/dojos',function(req,res,next){
+  res.render('index.ejs')
+})
+
+router.get('/dojos/list', function(req, res, next) {
   model.Dojos.forge()
   .fetch()
   .then(function(dojos){

@@ -7,10 +7,10 @@
     		templateUrl:'/postForm'
     	}
     })
-    .directive("postList",function(){
+    .directive("postsPage",function(){
     	return{
-    		restrict:"E",
-    		templateUrl:"/postList"
+            restrict:"E",
+    		templateUrl:"/posts"
 
     	}
     });

@@ -1,6 +1,17 @@
 (function() {
   var app = angular.module('aesBackoffice', ['post-directives']);
 
+  app.controller('MainController',['$scope',function($scope){
+    this.page = {};
+    this.showPosts = function() {
+      this.page = "posts";
+    }
+
+    this.showDojos = function(){
+      this.page = "dojos";
+    }
+  }]);
+
   app.controller('PostsController', ['postService','$http','$scope',function(postService,$http,$scope){
     this.currPost;
     this.posts = postService.posts;
