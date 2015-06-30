@@ -1,0 +1,92 @@
+
+<div ng-controller="DojoController as d">
+
+ <table class="table table-hover">
+
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Provincia</th>
+        <th>Ciudad</th>
+        <th>Borrar</th>
+      </tr>
+    </thead>
+
+    <tbody ng-repeat="dojo in d.dojos">
+
+      <tr ng-click="d.currentDojo(dojo)" >
+        <td >{{dojo.id}}</td>
+        <td>{{dojo.name}}</td>
+        <td>{{dojo.province}}</td>  
+        <td>{{dojo.city}}</td>
+        <td> <button type="button" class="btn btn-primary" ng-click="d.deleteDojo(dojo, $index)">Borrar</button> </td> 
+      </tr>
+
+    </tbody>
+
+  </table>
+
+  
+
+  <form ng-submit="d.addDojo()"
+    style="margin-top:30px;">
+
+    <div ng-show="error" class="alert alert-danger row">
+      <span>{{ error.message }}</span>
+    </div>
+    
+    <h3>Nuevo Dojo</h3>
+
+    
+    <fieldset class="form-group">
+      <input ng-model="d.currDojo.id" type="hidden" class="form-control"/>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label>Nombre</label>
+      <input ng-model="d.currentDojo.name" type="text" class="form-control" title="Nombre del Dojo" />
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label>Provincia</label>
+      <input ng-model="d.currentDojo.province" type="text" class="form-control" title="Provincia" />
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label>Ciudad</label>
+      <input ng-model="d.currentDojo.city" type="text" class="form-control" title="Ciudad" />
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label>Direccion</label>
+      <input ng-model="d.currentDojo.address" type="text" class="form-control" title="Direccion" />
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label>Email</label>
+      <input ng-model="d.currentDojo.email" type="text" class="form-control" title="Email" />
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label>Telefono</label>
+      <input ng-model="d.currentDojo.phone" type="text" class="form-control" title="Telefono" />
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label>Profesor</label>
+      <input ng-model="d.currentDojo.sensei" type="text" class="form-control" title="Profesor" />
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label>Logo</label>
+      <input ng-model="d.currentDojo.photo" type="text" class="form-control" title="Imagen" />
+    </fieldset>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <button type="button" class="btn btn-primary" ng-click="d.clear()">Cancelar</button>
+  </form>
+
+</div>
+
+

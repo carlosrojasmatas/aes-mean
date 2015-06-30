@@ -14,6 +14,19 @@ var Schema = {
 	
 	},
 
+	dojos: {
+		id:{type:'increments',nullable:false,primary:true},
+		name:{type:'string',nullable:false, maxlength:150},
+		province:{type:'string',nullable:false, maxlength:150},
+		city:{type:'string',nullable:false, maxlength:150},
+		address:{type:'string',nullable:false, maxlength:150},
+		email:{type:'string',nullable:false, maxlength:150},
+		phone:{type:'string',nullable:false, maxlength:150},
+		sensei:{type:'string',nullable:false, maxlength:150},
+		photo:{type:'string',nullable:false, maxlength:150},
+		created_at:{type:'dateTime',nullable:false},
+		updated_at:{type:'dateTime',nullable:false}
+	}
 };
 
 module.exports = Schema;
