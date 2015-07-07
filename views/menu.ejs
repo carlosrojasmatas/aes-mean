@@ -1,0 +1,15 @@
+<section>
+
+  <ul class="nav nav-pills">
+    <li ng-class="{ active:tab.isSet(1) }">
+      <a href ng-click="tab.setTab(1)">Posts</a>
+    </li>
+    <li ng-class="{ active:tab.isSet(2) }">
+      <a href ng-click="tab.setTab(2)">Dojos</a>
+    </li>
+  </ul>
+
+ <posts-grid ng-show="tab.isSet(1)" ></posts-grid>
+<dojos-grid ng-show="tab.isSet(2)" ></dojos-grid>
+
+</section>

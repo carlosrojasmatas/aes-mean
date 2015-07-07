@@ -21,7 +21,7 @@ router.post('/dojos/delete',function(req,res,next){
 });
 
 router.get('/dojos',function(req,res,next){
-  res.render('index.ejs')
+  res.render('dojos.ejs', {title: 'Administracion de Dojos'})
 })
 
 router.get('/dojos/list', function(req, res, next) {

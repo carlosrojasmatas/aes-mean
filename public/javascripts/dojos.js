@@ -1,9 +1,9 @@
 (function(){
-    angular.module('post-directives', [])
+    angular.module('dojo-directives', [])
 
-    .directive("dojosPage",function(){
+    .directive("dojosGrid",function(){
     	return{
-    		retrict:'E',
+    		restrict:'E',
     		templateUrl:'/dojos'
     	}
     });

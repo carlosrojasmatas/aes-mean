@@ -1,5 +1,5 @@
 (function() {
-  var app = angular.module('aesBackoffice', ['post-directives']);
+  var app = angular.module('aesBackoffice', ['post-directives','menu-directives','dojo-directives']);
 
   app.controller('MainController',['$scope',function($scope){
     this.page = {};
@@ -114,5 +114,6 @@
     return instance;
 
   }]);
+
 
 })();

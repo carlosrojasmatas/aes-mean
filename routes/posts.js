@@ -3,11 +3,8 @@ var express = require('express');
 var router = express.Router();
 
 /* GET users listing. */
-router.get('/posts', function(req, res, next) {
-  res.render('index.ejs', { title: 'New Post' });
-});
 
-router.get('/postForm', function(req, res, next) {
+router.get('/posts', function(req, res, next) {
   res.render('posts.ejs', { title: 'Administracion de Posts' });
 });
 
